@@ -88,11 +88,16 @@
     return '<div class="kpi"><div class="n">' + n + '</div><div class="l">' + l + '</div><div class="s">' + s + '</div></div>';
   }
 
-  function hero() {
-    var b = D.best_farm;
-    return '<div class="hero"><span class="big">Best farm: ' + esc(b.name) + ' — ' + signed(b.net_per_hour_usd) + '/h</span> · ' +
-      'Net ' + signed(b.net_point_usd) + ' on a $1,000 ticket over ' + b.hours + ' hours (45-day hold), ' +
-      'break-even share ' + pct(b.break_even_share, 1) + ', verdict ' + b.verdict + '.</div>';
+  function hero(p) {
+    var best = null, bestPh = -Infinity;
+    rows.forEach(function (r) {
+      var t = ticketNums(r, p.ticket);
+      if (t.perHour > bestPh) { bestPh = t.perHour; best = { row: r, t: t }; }
+    });
+    var b = best.t;
+    return '<div class="hero"><span class="big">Best farm: ' + esc(best.row.name) + ' — ' + signed(b.perHour) + '/h</span> · ' +
+      'Net ' + signed(b.netPoint) + ' on a $' + p.ticket.toLocaleString() + ' ticket over ' + HOLD_HOURS.toFixed(2) + ' hours (45-day hold), ' +
+      'break-even share ' + pct(b.breakEven, 1) + ', verdict ' + b.verdict + '.</div>';
   }
 
   function scatter() {
@@ -120,9 +125,9 @@
       dots +
       '<text x="' + (W / 2) + '" y="' + (H - 8) + '" font-size="11" text-anchor="middle" fill="#5d6b7d">TVL (log scale)</text>' +
       '<text x="12" y="' + (H / 2) + '" font-size="11" fill="#5d6b7d" transform="rotate(-90 12 ' + (H / 2) + ')">Value (log scale)</text>' +
-      '<text x="' + (W - R) + '" y="' + (T + 10) + '" font-size="11" text-anchor="end" fill="#1d5fa8">fitted curve</text>' +
-      '<text x="' + L + '" y="' + (T + 10) + '" font-size="11" fill="#0e7c6b">● board rows</text>' +
-      '<text x="' + (L + 90) + '" y="' + (T + 10) + '" font-size="11" fill="#9aa5b1">● live comps</text>' +
+      '<text x="' + (W - R) + '" y="' + (T + 10) + '" font-size="16" text-anchor="end" fill="#1d5fa8">fitted curve</text>' +
+      '<text x="' + L + '" y="' + (T + 10) + '" font-size="16" fill="#0e7c6b">● board rows</text>' +
+      '<text x="' + (L + 124) + '" y="' + (T + 10) + '" font-size="16" fill="#9aa5b1">● live comps</text>' +
       '</svg>';
   }
 
@@ -222,13 +227,13 @@
       '<span class="seg"><button class="' + (p.ticket === 1000 ? 'on' : '') + '" onclick="location.href=\'' + link(Object.assign({}, p, { ticket: 1000 })) + '\'">$1,000 ticket</button>' +
       '<button class="' + (p.ticket === 10000 ? 'on' : '') + '" onclick="location.href=\'' + link(Object.assign({}, p, { ticket: 10000 })) + '\'">$10,000 ticket</button></span>' +
       '<button class="btn" id="csv">Download CSV</button>' +
-      '<span class="muted small">' + list.length + ' rows · ticket cost ' + money(ticketCost(p.ticket), 2) + ' · click a row for its farm plan</span>' +
+      '<span class="muted small">' + list.length + ' rows · ticket cost ' + money(ticketCost(p.ticket), 2) + ' · top rows by value lose at $' + p.ticket.toLocaleString() + ': their TVL is too large for the ticket — sort by Net/hour to find the farms that pay · click a row for its farm plan</span>' +
       '</div><div style="overflow-x:auto"><table class="board">' + head + body + '</table></div></div>';
   }
 
   function renderBoard(p) {
     var app = $('app');
-    var html = kpiStrip() + hero() +
+    var html = kpiStrip() + hero(p) +
       '<div class="grid2"><div class="card"><h2>Implied value vs TVL</h2><p class="hint">Curve: log(mcap) = ' + D.fit.intercept + ' + ' + D.fit.slope + '·log(TVL), fitted on ' + D.fit.comps_n + ' clean comps. LOO band ×' + D.loo.p25_used + ' to ×' + D.loo.p75_used + '.</p>' + scatter() + '</div>' +
       '<div class="card"><h2>Tenure: who already has a token</h2>' + tenureChart() + '</div></div>';
     if (p.tab === 'live') html += liveTable(p);
@@ -300,7 +305,7 @@
     var planRows = [
       ['Day 0', 'Set up a fresh wallet and fund it', '$6.00', '0.50 h'],
       ['Days 1–7', 'Take the first position with the full ticket', '$0.00', '0.17 h'],
-      ['Weekly ×6', 'Repeat the core action once a week', '$0.00', '0.90 h'],
+      ['Weeks 2–7 (≈5.4 wks)', 'Repeat the core action once a week', '$0.00', '0.90 h'],
       ['Weekly', 'Track eligibility: points, quests, snapshots', '$0.00', '0.00 h'],
       ['If launch', 'Claim inside the launch window', '$4.93', '0.00 h'],
       ['Day 45', 'Walk away if the plan stops paying', '$0.00', '0.25 h'],

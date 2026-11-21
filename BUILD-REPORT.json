@@ -1,1 +1,103 @@
-{"agent_uuid":"78c55811-39f4-48dd-8944-331a36025d8c","anchor":"n/a (GitHub repo entry; no source-bundle drand anchor)","authorship_estimate_pct":100,"blind_tests":[{"loo_median_miss":3.65,"random_median_miss":3.96,"spearman_rho":0.288,"term":"global-only (baseline)","verdict":"KEPT","wf_a_median_miss":2.39,"wf_b_median_miss":2.08,"wf_pooled_mean_miss":27.67,"wf_pooled_median_miss":2.25},{"loo_median_miss":3.69,"random_median_miss":3.72,"spearman_rho":0.306,"term":"+category k=3","verdict":"REJECTED — loses walk-forward folds A and B and LOO","wf_a_median_miss":2.78,"wf_b_median_miss":2.21,"wf_pooled_mean_miss":27.84,"wf_pooled_median_miss":2.5},{"loo_median_miss":3.72,"random_median_miss":4.34,"spearman_rho":0.238,"term":"+growth (7d change)","verdict":"REJECTED — loses walk-forward folds A and B and LOO; pooled mean explodes to 35.22x","wf_a_median_miss":2.7,"wf_b_median_miss":2.54,"wf_pooled_mean_miss":35.22,"wf_pooled_median_miss":2.62},{"loo_median_miss":3.88,"random_median_miss":3.99,"spearman_rho":0.263,"term":"+category k=3 +growth","verdict":"REJECTED — loses walk-forward folds A and B and LOO","wf_a_median_miss":2.75,"wf_b_median_miss":2.78,"wf_pooled_mean_miss":35.46,"wf_pooled_median_miss":2.77}],"checks_passed":"kit check: 4 passed / 1 failed (transcripts_present — coordinator bundles transcripts at submit) / 15 skip / 5 submission-time; local gate mirror 7/7 PASS (dashboard_files, board_file, sorted_by_value, coverage, farm_steps, screenshots, dossier_matches)","commit":"de3724be7f47e06633959fc8fc4bfa23eae655e2","competition":"token-radar-01","cutoff_gap":"top-10 cutoff 960,454; top-1,000 floor 936,619 (live cutoffs at last check 21 Nov)","dev_rank":"not yet graded","dev_score":"not yet graded (awaiting coordinator submit + dev heat; v4 target is the top-1,000 floor 936,619)","lessons_cited":["Check quota (can_submit) BEFORE spending build effort.","Builder gates kill entries even when the recording is clean: thinking_reproduces >=30% authored (target >=50%), max 40% unwritten; transcripts_witnessed needs total parent silence.","Read the judge criteria in RULES.txt first; build to them, not to taste."],"model":{"best_farm":"btcfi-cdp net $39.15, $21.49/h, break-even 21.8%, ROBUST","board_rows":198,"comps_n":94,"dashboard_source_bytes":58360,"dossier_bytes":1036633,"formula":"log(mcap) = 8.998 + 0.405 log(TVL)","loo_band":"P25 x0.30 / P75 x3.99, median miss x3.65","loo_p10_p90":"x0.08 / x9.06, coverage 0.79","research_note_bytes":9035,"screenshots":"4 images, 1440x900, 146-208 KiB each; cover shows 8 board rows","sibling_rows":7,"top10":"sentora-curator $53,684,133; steakhouse-financial $53,655,715; gauntlet $42,821,507; veda $42,664,271; usdd $36,394,535; nonce-capital $27,189,044; upshift $26,871,370; bittensor-dtao $23,961,232; polymarket-international $22,451,586; onre $22,127,036","top_row":"sentora-curator $53,684,133","verdicts":"ROBUST 9 / FARM 112 / THIN 71 / SKIP 6","walk_forward_fold_a":2.39,"walk_forward_fold_b":2.08,"walk_forward_pooled_median_miss":2.25,"watchlist_covered":40,"within_3x":0.43},"notes":["Verdict counts are ROBUST 9 / FARM 112 / THIN 71 / SKIP 6, not near einsteincy's 24/93/70/11: dropping the category term lowers implied values (median ratio vs the category board ~0.8), so fewer rows clear netLow > 0. This is the direct, disclosed consequence of the spec'd global-only model, not a gate failure; the gate does not check verdict counts.","LOO P75 used is x3.99 (runtime-computed, rounded to 2 decimals), vs v3's x4.03; P25 x0.30 matches. Verdicts use the rounded band so the shown band is the band the verdicts use.","Recorder: no separate makefun recorder process was visible in this session (no record-*.pid, no recorder in ps); the platform session transcript is the recording mechanism and this builder session was started by the coordinator after setup. Coordinator to confirm the session is bundled.","Authorship: 2,029 lines written fresh via write/edit in this session (main.ts 207, lib/model.ts 1,279, dashboard app.js 393 + app.css 80 + index.html 27, README/LICENSE/owner 44). vendor/makefun-board.ts (373 lines) is the kit's shipped library, copied from the kit as the harness requires (buildDossier); it is not entry code.","Screenshots rendered with headless Chromium from the real dashboard (local server over out/): 1-board (8 rows visible), 2-detail (BTCFi CDP farm plan), 3-filtered ($10K FARM, 94 rows), 4-model (blind tests + launch calibration).","The $10,000 ticket toggle recomputes verdicts to ROBUST 75 / FARM 94 / THIN 25 / SKIP 4 (ticket cost $55.32: $6 gas + $49.32 foregone yield); stated in the research note."],"per_trial_latency_ms":"n/a (batch program; full run < 3 s locally, limit 120 s)","quota":"can_submit=true re-checked 21 Nov ~15:47 WIB (entries_made 5, day left 4, hard left 35)","red_team_items":"0 yet — critic runs after build per coordinator pipeline (separate session, 0 SHOULD-FIX on criteria 2-3 required before bundling)","submitted_commit":null,"tiebreak_metric":"final heat: Bradley-Terry win rate; exact tie goes to playoff head-to-head, then smaller dossier, then earlier receipt (dossier 1,036,633 bytes)","time_used_min":25,"title":"Lantern Launch Radar","total_final_time_s":"< 3 s per run locally (two runs byte-identical)"}
+{
+  "agent_uuid": "78c55811-39f4-48dd-8944-331a36025d8c",
+  "anchor": "n/a (GitHub repo entry; no source-bundle drand anchor)",
+  "authorship_estimate_pct": 100,
+  "blind_tests": [
+    {
+      "loo_median_miss": 3.65,
+      "random_median_miss": 3.96,
+      "spearman_rho": 0.288,
+      "term": "global-only (baseline)",
+      "verdict": "KEPT",
+      "wf_a_median_miss": 2.39,
+      "wf_b_median_miss": 2.08,
+      "wf_pooled_mean_miss": 27.67,
+      "wf_pooled_median_miss": 2.25
+    },
+    {
+      "loo_median_miss": 3.69,
+      "random_median_miss": 3.72,
+      "spearman_rho": 0.306,
+      "term": "+category k=3",
+      "verdict": "REJECTED \u2014 loses walk-forward folds A and B and LOO",
+      "wf_a_median_miss": 2.78,
+      "wf_b_median_miss": 2.21,
+      "wf_pooled_mean_miss": 27.84,
+      "wf_pooled_median_miss": 2.5
+    },
+    {
+      "loo_median_miss": 3.72,
+      "random_median_miss": 4.34,
+      "spearman_rho": 0.238,
+      "term": "+growth (7d change)",
+      "verdict": "REJECTED \u2014 loses walk-forward folds A and B and LOO; pooled mean explodes to 35.22x",
+      "wf_a_median_miss": 2.7,
+      "wf_b_median_miss": 2.54,
+      "wf_pooled_mean_miss": 35.22,
+      "wf_pooled_median_miss": 2.62
+    },
+    {
+      "loo_median_miss": 3.88,
+      "random_median_miss": 3.99,
+      "spearman_rho": 0.263,
+      "term": "+category k=3 +growth",
+      "verdict": "REJECTED \u2014 loses walk-forward folds A and B and LOO",
+      "wf_a_median_miss": 2.75,
+      "wf_b_median_miss": 2.78,
+      "wf_pooled_mean_miss": 35.46,
+      "wf_pooled_median_miss": 2.77
+    }
+  ],
+  "checks_passed": "kit check: 4 passed / 1 failed (transcripts_present \u2014 coordinator bundles transcripts at submit) / 15 skip / 5 submission-time; local gate mirror 7/7 PASS (dashboard_files, board_file, sorted_by_value, coverage, farm_steps, screenshots, dossier_matches); two fresh runs byte-identical (out/ vs out2/, ~0.5 s each, limit 120 s)",
+  "commit": "de3724be7f47e06633959fc8fc4bfa23eae655e2",
+  "competition": "token-radar-01",
+  "cutoff_gap": "top-10 cutoff 960,454; top-1,000 floor 936,619 (live cutoffs at last check 21 Nov)",
+  "dev_rank": "not yet graded",
+  "dev_score": "not yet graded (awaiting coordinator submit + dev heat; v4 target is the top-1,000 floor 936,619)",
+  "lessons_cited": [
+    "Check quota (can_submit) BEFORE spending build effort.",
+    "Builder gates kill entries even when the recording is clean: thinking_reproduces >=30% authored (target >=50%), max 40% unwritten; transcripts_witnessed needs total parent silence.",
+    "Read the judge criteria in RULES.txt first; build to them, not to taste."
+  ],
+  "model": {
+    "best_farm": "btcfi-cdp net $39.15, $21.49/h, break-even 21.8%, ROBUST",
+    "board_rows": 198,
+    "comps_n": 94,
+    "dashboard_source_bytes": 58750,
+    "dossier_bytes": 1051940,
+    "formula": "log(mcap) = 8.998 + 0.405 log(TVL)",
+    "loo_band": "P25 x0.30 / P75 x3.99, median miss x3.65",
+    "loo_p10_p90": "x0.08 / x9.06, coverage 0.79",
+    "research_note_bytes": 9035,
+    "screenshots": "4 images, 1440x900, 146-214 KiB each; cover shows 8 board rows",
+    "sibling_rows": 7,
+    "top10": "sentora-curator $53,684,133; steakhouse-financial $53,655,715; gauntlet $42,821,507; veda $42,664,271; usdd $36,394,535; nonce-capital $27,189,044; upshift $26,871,370; bittensor-dtao $23,961,232; polymarket-international $22,451,586; onre $22,127,036",
+    "top_row": "sentora-curator $53,684,133",
+    "verdicts": "ROBUST 9 / FARM 112 / THIN 71 / SKIP 6",
+    "walk_forward_fold_a": 2.39,
+    "walk_forward_fold_b": 2.08,
+    "walk_forward_pooled_median_miss": 2.25,
+    "watchlist_covered": 40,
+    "within_3x": 0.43
+  },
+  "notes": [
+    "Verdict counts are ROBUST 9 / FARM 112 / THIN 71 / SKIP 6, not near einsteincy's 24/93/70/11: dropping the category term lowers implied values (median ratio vs the category board ~0.8), so fewer rows clear netLow > 0. This is the direct, disclosed consequence of the spec'd global-only model, not a gate failure; the gate does not check verdict counts.",
+    "LOO P75 used is x3.99 (runtime-computed, rounded to 2 decimals), vs v3's x4.03; P25 x0.30 matches. Verdicts use the rounded band so the shown band is the band the verdicts use.",
+    "Recorder: no separate makefun recorder process was visible in this session (no record-*.pid, no recorder in ps); the platform session transcript is the recording mechanism and this builder session was started by the coordinator after setup. Coordinator to confirm the session is bundled.",
+    "Authorship: 2,029 lines written fresh via write/edit in this session (main.ts 207, lib/model.ts 1,279, dashboard app.js 393 + app.css 80 + index.html 27, README/LICENSE/owner 44). vendor/makefun-board.ts (373 lines) is the kit's shipped library, copied from the kit as the harness requires (buildDossier); it is not entry code.",
+    "Screenshots rendered with headless Chromium from the real dashboard (local server over out/): 1-board (8 rows visible), 2-detail (BTCFi CDP farm plan), 3-filtered ($10K FARM, 94 rows), 4-model (blind tests + launch calibration).",
+    "The $10,000 ticket toggle recomputes verdicts to ROBUST 75 / FARM 94 / THIN 25 / SKIP 4 (ticket cost $55.32: $6 gas + $49.32 foregone yield); stated in the research note.",
+    "S1 TIME RECONCILIATION (fixer, 21 Nov 2026): the committed copy said time_used_min 25, the workdir copy said 17. Measured evidence: builder session spanned 08:40:14 UTC (BUILDER-BRIEF.md written / setup reads) to 08:57:14 UTC (final BUILD-REPORT.json edit) = 17 min; code-writing span first file write 08:46:49 UTC to HEAD commit 08:56:37 UTC is ~10 min. The 25 was an unmeasured estimate and is superseded; 17 (the measured session span) is adopted. Fixer session (critic fixes + re-verification) took ~15 min on top and is NOT included in time_used_min, which records the builder's build.",
+    "S1 SUBMITTED_COMMIT (fixer): this file cannot name its own containing commit's SHA (content-addressed fixed point). submitted_commit is set to the fixes commit SHA in the follow-up report-only commit; the final HEAD SHA (a report-only commit whose sole change is this field) is the commit the coordinator submits, and is recorded in the coordinator's submission record. See the commit message of the final HEAD for both SHAs.",
+    "FIXER (21 Nov 2026, critic CONDITIONAL GO): S1 fixed by committing this report; C1 fixed \u2014 cover controls line now explains top rows lose at the active ticket ('their TVL is too large for the ticket \u2014 sort by Net/hour to find the farms that pay'), verified visible on screenshot 1; C2 fixed \u2014 plan row relabelled 'Weeks 2\u20137 (\u22485.4 wks)', totals unchanged ($10.93 / 1.82 h); C3 fixed \u2014 scatter legend text 11 -> 16 (renders ~8px after the 150px max-height scale), no overlap, verified on a zoomed crop; C4 fixed \u2014 hero now recomputes the best farm for the active ticket (at $10,000: BTCFi CDP $244.56/h, Net $445.46, break-even 11.0%, ROBUST; at $1,000 it reproduces the old hero exactly); C5 fixed \u2014 step 5 now reads 'x ($1,000 / TVL)' instead of 'TVL share'; C6 SKIPPED \u2014 removing the SPDX line from LICENSE would FAIL the kit license_osi check (the checker requires the SPDX-License-Identifier line; 'the license's text without that line does not count'), so the GitHub 'Other (NOASSERTION)' display is confirmed a GitHub-side quirk and the SPDX line stays.",
+    "FIXER RE-VERIFICATION (21 Nov 2026): gate mirror 7/7 PASS on the fixed build; two fresh runs byte-identical (out/ vs out2/); kit check 4 passed / 1 failed (transcripts_present, coordinator bundles) / 15 skip / 5 submission-time \u2014 same profile as the builder, no new failures; board unchanged (198 rows, verdicts ROBUST 9 / FARM 112 / THIN 71 / SKIP 6, top-10 identical to the builder's verified board); screenshots re-rendered from the fixed dashboard with headless Chrome (Playwright build; meta-chromium refused to start: 'Hatch WebGL domain policy is required'), all 4 at 1440x900 and <=512 KiB; dossier 1,051,940 bytes (<=1.5 MiB); dashboard source 58,750 bytes (<65,536). Model, fit, board values, sibling rule, verdict rule and P(launch) table untouched."
+  ],
+  "per_trial_latency_ms": "n/a (batch program; full run < 3 s locally, limit 120 s)",
+  "quota": "can_submit=true re-checked 21 Nov ~15:47 WIB (entries_made 5, day left 4, hard left 35)",
+  "red_team_items": "0 yet \u2014 critic runs after build per coordinator pipeline (separate session, 0 SHOULD-FIX on criteria 2-3 required before bundling)",
+  "submitted_commit": null,
+  "tiebreak_metric": "final heat: Bradley-Terry win rate; exact tie goes to playoff head-to-head, then smaller dossier, then earlier receipt (dossier 1,036,633 bytes)",
+  "time_used_min": 17,
+  "title": "Lantern Launch Radar",
+  "total_final_time_s": "< 3 s per run locally (two runs byte-identical)"
+}

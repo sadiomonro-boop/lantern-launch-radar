@@ -666,7 +666,7 @@ export function farmSteps(row: Omit<BoardRow, 'farm_steps' | 'rank' | 'rank_p10'
     `On ${row.name}, take a position with the full $1,000 and hold it for the first 7 days; the protocol holds ${tvl} TVL and has run ${age} with no token recorded.`,
     `Repeat the core action once a week for 45 days (about 1.82 hours of active work in total), keeping every transaction hash and a weekly screenshot of your position.`,
     `Track eligibility weekly: read ${row.name}'s announcements for points, quests or snapshot rules, and note any deadline the moment it appears.`,
-    `If a token launches, claim inside its window: at the point estimate your farm is worth ${gross} gross (${row.p_launch.toFixed(2)} launch prior × 10% of ${implied} implied value × ($1,000 ÷ ${tvl} TVL share)), minus $10.93 costs, for a net of ${net}.`,
+    `If a token launches, claim inside its window: at the point estimate your farm is worth ${gross} gross (${row.p_launch.toFixed(2)} launch prior × 10% of ${implied} implied value × ($1,000 ÷ ${tvl} TVL)), minus $10.93 costs, for a net of ${net}.`,
     payLine,
   ];
 }
